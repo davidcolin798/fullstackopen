@@ -1,22 +1,22 @@
-const Hello = (props) =>{
-  return(
-    <div>
-      <p>Hello {props.name}, your are {props.age}</p>
-    </div>
-  )
-} 
-
+import { useState } from "react"
+const Display =({counter})=> <div>{counter}</div>
+const Plus = ({onSmash, text})=><button onClick={onSmash}> {text} </button>
 
 const App = () =>{
-  const name ='peter';
-  const age = 10;
+  const[counter,setCounter] = useState(0)
+  const increaseNyOne=()=>setCounter(counter+1);
+  const decreaseByOne=()=>setCounter(counter-1);
+  const setZero =()=>setCounter(0);
+
+  
   
   return (
-      <div>
-        <h1>Greetings</h1>
-      <Hello name='george' age={20+10}/>
-      <Hello name={name} age={age}/>
-      </div>     
+     <div>
+        <Display counter={counter}/>
+        <Plus onClick ={increaseNyOne} text={'plus'}/>
+        <Plus onClick={setZero} text={'zero'}/>
+        <Plus onClick={decreaseByOne} text={'minus'}/>
+     </div> 
   )
 }
 export default App
